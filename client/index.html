@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Состояние кабинетов</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>Статус кабинетов</h1>
+        
+          <div v-if='!quantums.length' class="d-flex align-items-center">
+            <strong>Loading...</strong>
+            <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+          </div>  
+          <div v-else>
+            <ol class="list-group list-group-numbered">
+              <li v-for='quantum of quantums' class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">{{quantum.name}}</div>
+                  <span v-if='quantum.state == "Открыт"' class="badge bg-success">{{quantum.state}}</span>
+                  <span v-else-if='quantum.state == "Закрыт"' class="badge bg-danger">{{quantum.state}}</span>
+                  <span v-else class="badge bg-warning text-dark">{{quantum.state}}</span>
+                </div>
+                <span class="badge bg-primary rounded-pill">{{quantum.count}}</span>
+              </li>  
+            </ol>
+
+          </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
